@@ -1,0 +1,228 @@
+<resources>
+    <string name="app_name">Dominos</string>
+    <string name="brand_prefix">Domi</string>
+    <string name="brand_suffix">nos</string>
+    <string name="brand_sub_houma">HoumaFood Tunisie</string>
+
+    <!-- Splash & Onboarding -->
+    <string name="splash_tagline">Des plats délicieux, livrés rapidement</string>
+    <string name="onboarding_title_1">Bienvenue chez Dominos &amp; HoumaFood</string>
+    <string name="onboarding_desc_1">Commandez vos pizzas artisanales, burgers gourmets, sushis et spécialités tunisiennes fraîchement préparés à Tunis.</string>
+    <string name="onboarding_title_2">Livraison Rapide à Domicile</string>
+    <string name="onboarding_desc_2">Suivez votre commande en temps réel de notre cuisine jusqu\'à votre porte avec paiement à la livraison (COD).</string>
+    <string name="action_continue">Continuer</string>
+    <string name="action_skip">Passer</string>
+    <string name="action_start_ordering">Commander maintenant</string>
+
+    <!-- Auth / Login Screen -->
+    <string name="auth_hero_subtitle">Des repas chauds,\ndirectement à votre porte.</string>
+    <string name="auth_welcome_back">Bon retour</string>
+    <string name="auth_create_account">Créer un compte</string>
+    <string name="auth_email_or_phone">Email ou téléphone</string>
+    <string name="auth_password">Mot de passe</string>
+    <string name="auth_full_name">Nom complet</string>
+    <string name="auth_phone">Numéro de téléphone (+216)</string>
+    <string name="auth_keep_signed_in">Rester connecté</string>
+    <string name="auth_forgot_password">Mot de passe oublié ?</string>
+    <string name="auth_login_btn">Se connecter</string>
+    <string name="auth_signup_btn">S\'inscrire</string>
+    <string name="auth_or_continue_with">Ou continuer avec</string>
+    <string name="auth_demo_customer">Client Démo</string>
+    <string name="auth_demo_admin">Admin Démo</string>
+    <string name="auth_no_account">Vous n\'avez pas de compte ?</string>
+    <string name="auth_have_account">Vous avez déjà un compte ?</string>
+    <string name="auth_sign_up_link">S\'inscrire</string>
+    <string name="auth_sign_in_link">Se connecter</string>
+    <string name="auth_guest_continue">Continuer sans compte (Mode Démo)</string>
+    <string name="auth_password_reset_info">En mode démo ou Supabase gratuit, contactez le restaurant ou utilisez un compte démo rapide ci-dessous.</string>
+
+    <!-- Navigation -->
+    <string name="nav_home">Accueil</string>
+    <string name="nav_saved">Favoris</string>
+    <string name="nav_cart">Panier</string>
+    <string name="nav_offers">Offres</string>
+    <string name="nav_profile">Profil</string>
+    <string name="nav_orders">Commandes</string>
+    <string name="nav_admin">Admin</string>
+
+    <!-- Header & Home -->
+    <string name="deliver_to">Livrer à</string>
+    <string name="address_home_label">Domicile</string>
+    <string name="search_placeholder">Rechercher pizza, burger, makloub…</string>
+    <string name="promo_banner_title">LIVRAISON RAPIDE &amp; GRATUITE !</string>
+    <string name="promo_banner_subtitle">Sur les commandes éligibles cette semaine !</string>
+    <string name="promo_order_now">COMMANDER</string>
+    <string name="section_categories">Catégories</string>
+    <string name="section_order_again">Commander à nouveau</string>
+    <string name="section_deals_for_you">Offres pour vous</string>
+    <string name="section_featured_meals">Plats vedettes</string>
+    <string name="section_popular_products">Produits populaires</string>
+    <string name="action_see_all">Voir tout</string>
+    <string name="category_all">Tous</string>
+    <string name="status_open">Ouvert</string>
+    <string name="status_closed">Fermé</string>
+    <string name="delivery_est_format">%1$d min</string>
+    <string name="calories_format">%1$d Calories</string>
+    <string name="delivery_fee_label">Frais de livraison</string>
+    <string name="min_order_label">Commande min.</string>
+    <string name="free_label">GRATUIT</string>
+    <string name="apply_btn">Appliquer</string>
+    <string name="applied_btn">Appliqué</string>
+    <string name="yesterday_label">Hier</string>
+    <string name="days_ago_label">Il y a 3 jours</string>
+    <string name="deal_whole_order">SUR TOUTE LA COMMANDE</string>
+    <string name="deal_30_off">-30% DE REMISE</string>
+    <string name="deal_delivery_fee">FRAIS DE LIVRAISON</string>
+
+    <!-- Demo & Supabase Banner -->
+    <string name="demo_mode_badge">MODE DÉMO LOCAL</string>
+    <string name="supabase_online_badge">SUPABASE EN LIGNE</string>
+    <string name="demo_mode_notice">Mode démonstration local actif — Les commandes passées ici sont des démonstrations locales et ne sont pas envoyées à un vrai restaurant.</string>
+    <string name="supabase_connected_notice">Connecté à Supabase PostgreSQL en ligne.</string>
+
+    <!-- Catalog & Product Details -->
+    <string name="catalog_title">Menu &amp; Catalogue</string>
+    <string name="sort_popular">Populaire</string>
+    <string name="sort_price_asc">Prix croissant</string>
+    <string name="sort_price_desc">Prix décroissant</string>
+    <string name="product_unavailable">Indisponible</string>
+    <string name="product_featured">Vedette</string>
+    <string name="product_details_title">Détails du plat</string>
+    <string name="select_size_variant">Choisir la taille / variante</string>
+    <string name="select_extras">Suppléments optionnels</string>
+    <string name="special_instructions_label">Instructions spéciales (optionnel)</string>
+    <string name="special_instructions_hint">Ex: Sans oignons, bien cuit, couper en 8…</string>
+    <string name="quantity_label">Quantité</string>
+    <string name="total_price_label">Total calculé</string>
+    <string name="add_to_cart_btn">Ajouter au panier</string>
+    <string name="added_to_cart_toast">Ajouté au panier avec succès !</string>
+
+    <!-- Cart -->
+    <string name="cart_title">Mon Panier</string>
+    <string name="cart_empty_title">Votre panier est vide</string>
+    <string name="cart_empty_subtitle">Explorez notre carte et ajoutez vos pizzas et plats préférés.</string>
+    <string name="cart_browse_menu">Parcourir le menu</string>
+    <string name="cart_promo_code_label">Code promotionnel</string>
+    <string name="cart_subtotal">Sous-total</string>
+    <string name="cart_delivery_fee">Frais de livraison</string>
+    <string name="cart_discount">Remise promotionnelle</string>
+    <string name="cart_total">Total à payer (COD)</string>
+    <string name="cart_min_order_warning">Le montant minimum de commande est de %1$s. Ajoutez encore %2$s.</string>
+    <string name="cart_proceed_checkout">Passer à la caisse</string>
+    <string name="cart_clear">Vider le panier</string>
+
+    <!-- Checkout -->
+    <string name="checkout_title">Validation de commande</string>
+    <string name="checkout_customer_info">Informations de livraison</string>
+    <string name="checkout_name_label">Nom du client *</string>
+    <string name="checkout_phone_label">Téléphone tunisien (+216 / 8 chiffres) *</string>
+    <string name="checkout_address_label">Adresse complète de livraison *</string>
+    <string name="checkout_instructions_label">Instructions pour le livreur (optionnel)</string>
+    <string name="checkout_saved_addresses">Adresses enregistrées</string>
+    <string name="checkout_payment_method">Mode de paiement</string>
+    <string name="checkout_cod_title">Paiement à la livraison (Cash on Delivery)</string>
+    <string name="checkout_cod_subtitle">Payez en espèces en dinars tunisiens (TND) directement au livreur à la réception.</string>
+    <string name="checkout_order_summary">Récapitulatif de la commande</string>
+    <string name="checkout_confirm_btn">Confirmer la commande (COD)</string>
+    <string name="checkout_submitting">Validation en cours…</string>
+
+    <!-- Validation & Errors -->
+    <string name="error_restaurant_closed">Le restaurant est actuellement fermé. Impossible de passer commande pour le moment.</string>
+    <string name="error_invalid_name">Veuillez saisir votre nom complet (min. 3 caractères).</string>
+    <string name="error_invalid_phone">Veuillez saisir un numéro de téléphone tunisien valide (8 chiffres ou +216).</string>
+    <string name="error_invalid_address">Veuillez saisir une adresse de livraison précise (min. 6 caractères).</string>
+    <string name="error_product_unavailable">Un ou plusieurs produits de votre panier ne sont plus disponibles.</string>
+    <string name="error_min_order_not_met">Le sous-total n\'atteint pas le minimum de commande requis.</string>
+    <string name="error_network_unavailable">Connexion réseau indisponible. Votre commande n\'a pas été envoyée. Vérifiez votre connexion et réessayez.</string>
+    <string name="error_duplicate_order">Cette commande est déjà en cours d\'envoi. Veuillez patienter.</string>
+    <string name="error_auth_invalid">Veuillez vérifier vos identifiants.</string>
+
+    <!-- Order Confirmation & Tracking -->
+    <string name="order_confirmed_title">Commande Confirmée !</string>
+    <string name="order_confirmed_demo_note">DÉMONSTRATION LOCALE : Cette commande est enregistrée localement à titre de test.</string>
+    <string name="order_number_label">N° de commande : %1$s</string>
+    <string name="order_track_btn">Suivre ma commande</string>
+    <string name="order_back_home_btn">Retour à l\'accueil</string>
+    <string name="order_tracking_title">Suivi des commandes</string>
+    <string name="order_refresh_btn">Actualiser le statut</string>
+    <string name="order_empty_title">Aucune commande pour le moment</string>
+    <string name="order_empty_subtitle">Vos commandes en cours et votre historique apparaîtront ici.</string>
+    <string name="status_pending">En attente</string>
+    <string name="status_confirmed">Confirmée</string>
+    <string name="status_preparing">En préparation</string>
+    <string name="status_ready">Prête</string>
+    <string name="status_out_for_delivery">En cours de livraison</string>
+    <string name="status_delivered">Livrée</string>
+    <string name="status_cancelled">Annulée / Refusée</string>
+    <string name="order_items_count">%1$d article(s)</string>
+    <string name="order_est_arrival">Livraison estimée : ~%1$d min</string>
+
+    <!-- Favorites -->
+    <string name="favorites_title">Mes Plats Favoris</string>
+    <string name="favorites_empty_title">Aucun favori enregistré</string>
+    <string name="favorites_empty_subtitle">Appuyez sur le cœur d\'un plat pour le retrouver rapidement ici.</string>
+
+    <!-- Profile, Settings, Contact & Help -->
+    <string name="profile_title">Profil &amp; Paramètres</string>
+    <string name="profile_section_account">Mon Compte</string>
+    <string name="profile_save_btn">Enregistrer le profil</string>
+    <string name="profile_saved_toast">Profil mis à jour !</string>
+    <string name="profile_addresses_title">Mes Adresses de livraison</string>
+    <string name="profile_add_address">Ajouter une adresse</string>
+    <string name="profile_address_label_hint">Libellé (ex: Maison, Bureau)</string>
+    <string name="profile_language_title">Langue de l\'application</string>
+    <string name="lang_french">Français (Par défaut)</string>
+    <string name="lang_arabic">العربية (RTL)</string>
+    <string name="lang_english">English</string>
+    <string name="profile_notifications_title">Préférences de notifications</string>
+    <string name="profile_notif_order_updates">Mises à jour du statut de commande</string>
+    <string name="profile_notif_promos">Offres spéciales et codes promo</string>
+    <string name="profile_contact_help_title">Contact, Aide &amp; FAQ</string>
+    <string name="profile_about_title">À propos de Dominos Tunisie</string>
+    <string name="profile_about_desc">Application native Android construite avec Jetpack Compose et Supabase PostgreSQL Free Tier. Paiement exclusivement à la livraison (Cash on Delivery) en dinars tunisiens (TND).</string>
+    <string name="profile_admin_portal_btn">Portail d\'Administration Restaurant</string>
+    <string name="profile_logout_btn">Se déconnecter</string>
+    <string name="profile_login_btn">Se connecter / Changer de compte</string>
+    <string name="contact_phone_label">Téléphone</string>
+    <string name="contact_address_label">Adresse du restaurant</string>
+    <string name="contact_hours_label">Horaires d\'ouverture</string>
+    <string name="contact_whatsapp_btn">Contacter sur WhatsApp</string>
+    <string name="contact_call_btn">Appeler le restaurant</string>
+    <string name="faq_title">Questions Fréquentes (FAQ)</string>
+    <string name="faq_q1">Comment fonctionne le paiement ?</string>
+    <string name="faq_a1">Nous acceptons uniquement le paiement en espèces à la livraison (Cash on Delivery) en Dinars Tunisiens. Aucune carte bancaire n\'est demandée.</string>
+    <string name="faq_q2">Quels sont les délais et frais de livraison ?</string>
+    <string name="faq_a2">Le délai moyen est de 25 à 35 minutes selon votre quartier à Tunis. Les frais standards sont affichés avant la validation.</string>
+    <string name="faq_q3">Comment suivre ma commande ?</string>
+    <string name="faq_a3">Rendez-vous dans l\'onglet Commandes/Offres pour voir la progression en direct (En attente, Confirmée, En préparation, Prête, En livraison, Livrée).</string>
+
+    <!-- Admin Portal -->
+    <string name="admin_title">Administration Restaurant</string>
+    <string name="admin_unauthorized">Accès réservé aux administrateurs autorisés (rôle RLS vérifié).</string>
+    <string name="admin_switch_demo_admin">Passer en Admin Démo pour tester</string>
+    <string name="admin_tab_orders">Commandes</string>
+    <string name="admin_tab_products">Produits</string>
+    <string name="admin_tab_categories">Catégories</string>
+    <string name="admin_tab_settings">Restaurant</string>
+    <string name="admin_sales_total">Chiffre d\'affaires total</string>
+    <string name="admin_orders_count">Total commandes</string>
+    <string name="admin_Toggle_open">Restaurant Ouvert aux commandes</string>
+    <string name="admin_add_product">Nouveau produit</string>
+    <string name="admin_edit_product">Modifier le produit</string>
+    <string name="admin_add_category">Nouvelle catégorie</string>
+    <string name="admin_edit_category">Modifier la catégorie</string>
+    <string name="admin_name_fr">Nom (Français)</string>
+    <string name="admin_name_ar">Nom (Arabe)</string>
+    <string name="admin_name_en">Nom (Anglais)</string>
+    <string name="admin_desc_fr">Description (Français)</string>
+    <string name="admin_desc_ar">Description (Arabe)</string>
+    <string name="admin_desc_en">Description (Anglais)</string>
+    <string name="admin_price_millimes">Prix en millimes (ex: 18500 = 18,500 DT)</string>
+    <string name="admin_image_url">URL HTTPS de l\'image externe</string>
+    <string name="admin_available">Disponible</string>
+    <string name="admin_featured">Produit vedette</string>
+    <string name="admin_active">Catégorie active</string>
+    <string name="admin_save">Enregistrer</string>
+    <string name="admin_delete">Supprimer</string>
+    <string name="admin_cancel">Annuler</string>
+</resources>

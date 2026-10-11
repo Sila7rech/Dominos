@@ -1,0 +1,228 @@
+<resources>
+    <string name="app_name">Dominos</string>
+    <string name="brand_prefix">Domi</string>
+    <string name="brand_suffix">nos</string>
+    <string name="brand_sub_houma">HoumaFood Tunisia</string>
+
+    <!-- Splash & Onboarding -->
+    <string name="splash_tagline">Delicious food, delivered fast</string>
+    <string name="onboarding_title_1">Welcome to Dominos &amp; HoumaFood</string>
+    <string name="onboarding_desc_1">Order handcrafted pizzas, gourmet burgers, sushi, and freshly prepared Tunisian specialties across Tunis.</string>
+    <string name="onboarding_title_2">Fast Home Delivery</string>
+    <string name="onboarding_desc_2">Track your order step-by-step from our kitchen to your doorstep with Cash on Delivery (COD).</string>
+    <string name="action_continue">Continue</string>
+    <string name="action_skip">Skip</string>
+    <string name="action_start_ordering">Order Now</string>
+
+    <!-- Auth / Login Screen -->
+    <string name="auth_hero_subtitle">Hot meals,\nright at your door.</string>
+    <string name="auth_welcome_back">Welcome Back</string>
+    <string name="auth_create_account">Create Account</string>
+    <string name="auth_email_or_phone">Email or phone</string>
+    <string name="auth_password">Password</string>
+    <string name="auth_full_name">Full name</string>
+    <string name="auth_phone">Phone number (+216)</string>
+    <string name="auth_keep_signed_in">Keep me signed in</string>
+    <string name="auth_forgot_password">Forgot Password?</string>
+    <string name="auth_login_btn">Log In</string>
+    <string name="auth_signup_btn">Sign Up</string>
+    <string name="auth_or_continue_with">Or continue with</string>
+    <string name="auth_demo_customer">Demo Customer</string>
+    <string name="auth_demo_admin">Demo Admin</string>
+    <string name="auth_no_account">Don\'t have an account?</string>
+    <string name="auth_have_account">Already have an account?</string>
+    <string name="auth_sign_up_link">Sign Up</string>
+    <string name="auth_sign_in_link">Log In</string>
+    <string name="auth_guest_continue">Continue as Guest (Demo Mode)</string>
+    <string name="auth_password_reset_info">In demo mode or free Supabase tier, contact the restaurant or use a quick demo account below.</string>
+
+    <!-- Navigation -->
+    <string name="nav_home">Home</string>
+    <string name="nav_saved">Saved</string>
+    <string name="nav_cart">Cart</string>
+    <string name="nav_offers">Offers</string>
+    <string name="nav_profile">Profile</string>
+    <string name="nav_orders">Orders</string>
+    <string name="nav_admin">Admin</string>
+
+    <!-- Header & Home -->
+    <string name="deliver_to">Deliver to</string>
+    <string name="address_home_label">Home</string>
+    <string name="search_placeholder">Search pizza, burger, makloub…</string>
+    <string name="promo_banner_title">FAST &amp; FREE DELIVERY!</string>
+    <string name="promo_banner_subtitle">On all eligible orders this week!</string>
+    <string name="promo_order_now">ORDER NOW</string>
+    <string name="section_categories">Categories</string>
+    <string name="section_order_again">Order again</string>
+    <string name="section_deals_for_you">Deals for you</string>
+    <string name="section_featured_meals">Featured meals</string>
+    <string name="section_popular_products">Popular products</string>
+    <string name="action_see_all">See All</string>
+    <string name="category_all">All</string>
+    <string name="status_open">Open</string>
+    <string name="status_closed">Closed</string>
+    <string name="delivery_est_format">%1$d min</string>
+    <string name="calories_format">%1$d Calories</string>
+    <string name="delivery_fee_label">Delivery fee</string>
+    <string name="min_order_label">Min. order</string>
+    <string name="free_label">FREE</string>
+    <string name="apply_btn">Apply</string>
+    <string name="applied_btn">Applied</string>
+    <string name="yesterday_label">Yesterday</string>
+    <string name="days_ago_label">3 days ago</string>
+    <string name="deal_whole_order">YOUR WHOLE ORDER</string>
+    <string name="deal_30_off">30% OFF</string>
+    <string name="deal_delivery_fee">DELIVERY FEE</string>
+
+    <!-- Demo & Supabase Banner -->
+    <string name="demo_mode_badge">LOCAL DEMO MODE</string>
+    <string name="supabase_online_badge">SUPABASE ONLINE</string>
+    <string name="demo_mode_notice">Local demonstration mode active — Orders placed here are local demonstrations and are not sent to a real restaurant.</string>
+    <string name="supabase_connected_notice">Connected to live Supabase PostgreSQL database.</string>
+
+    <!-- Catalog & Product Details -->
+    <string name="catalog_title">Menu &amp; Catalog</string>
+    <string name="sort_popular">Popular</string>
+    <string name="sort_price_asc">Price: Low to High</string>
+    <string name="sort_price_desc">Price: High to Low</string>
+    <string name="product_unavailable">Unavailable</string>
+    <string name="product_featured">Featured</string>
+    <string name="product_details_title">Meal Details</string>
+    <string name="select_size_variant">Select size / variant</string>
+    <string name="select_extras">Optional extras</string>
+    <string name="special_instructions_label">Special instructions (optional)</string>
+    <string name="special_instructions_hint">E.g., No onions, extra crispy, cut into 8 slices…</string>
+    <string name="quantity_label">Quantity</string>
+    <string name="total_price_label">Calculated total</string>
+    <string name="add_to_cart_btn">Add to Cart</string>
+    <string name="added_to_cart_toast">Added to cart!</string>
+
+    <!-- Cart -->
+    <string name="cart_title">Shopping Cart</string>
+    <string name="cart_empty_title">Your cart is empty</string>
+    <string name="cart_empty_subtitle">Browse our menu and add your favorite pizzas and meals.</string>
+    <string name="cart_browse_menu">Browse Menu</string>
+    <string name="cart_promo_code_label">Promo code</string>
+    <string name="cart_subtotal">Subtotal</string>
+    <string name="cart_delivery_fee">Delivery fee</string>
+    <string name="cart_discount">Promo discount</string>
+    <string name="cart_total">Final Total (COD)</string>
+    <string name="cart_min_order_warning">Minimum order amount is %1$s. Add %2$s more to checkout.</string>
+    <string name="cart_proceed_checkout">Proceed to Checkout</string>
+    <string name="cart_clear">Clear cart</string>
+
+    <!-- Checkout -->
+    <string name="checkout_title">Checkout</string>
+    <string name="checkout_customer_info">Delivery Details</string>
+    <string name="checkout_name_label">Customer Name *</string>
+    <string name="checkout_phone_label">Tunisian Phone (+216 / 8 digits) *</string>
+    <string name="checkout_address_label">Full Delivery Address *</string>
+    <string name="checkout_instructions_label">Delivery Instructions (optional)</string>
+    <string name="checkout_saved_addresses">Saved Addresses</string>
+    <string name="checkout_payment_method">Payment Method</string>
+    <string name="checkout_cod_title">Cash on Delivery (COD Only)</string>
+    <string name="checkout_cod_subtitle">Pay in Tunisian Dinars (TND) directly to the courier upon receiving your order.</string>
+    <string name="checkout_order_summary">Order Summary</string>
+    <string name="checkout_confirm_btn">Confirm Order (COD)</string>
+    <string name="checkout_submitting">Submitting order…</string>
+
+    <!-- Validation & Errors -->
+    <string name="error_restaurant_closed">The restaurant is currently closed. Orders cannot be placed right now.</string>
+    <string name="error_invalid_name">Please enter your full name (at least 3 characters).</string>
+    <string name="error_invalid_phone">Please enter a valid Tunisian phone number (8 digits or +216).</string>
+    <string name="error_invalid_address">Please enter a complete delivery address (at least 6 characters).</string>
+    <string name="error_product_unavailable">One or more items in your cart are no longer available.</string>
+    <string name="error_min_order_not_met">Order subtotal does not meet the minimum order requirement.</string>
+    <string name="error_network_unavailable">Network unavailable. Your order was not saved. Please check your connection and try again.</string>
+    <string name="error_duplicate_order">This order is already being submitted. Please wait.</string>
+    <string name="error_auth_invalid">Please check your login credentials.</string>
+
+    <!-- Order Confirmation & Tracking -->
+    <string name="order_confirmed_title">Order Confirmed!</string>
+    <string name="order_confirmed_demo_note">LOCAL DEMO ORDER: This order was saved locally for demonstration purposes only.</string>
+    <string name="order_number_label">Order #: %1$s</string>
+    <string name="order_track_btn">Track My Order</string>
+    <string name="order_back_home_btn">Back to Home</string>
+    <string name="order_tracking_title">Order Tracking &amp; History</string>
+    <string name="order_refresh_btn">Refresh Status</string>
+    <string name="order_empty_title">No orders yet</string>
+    <string name="order_empty_subtitle">Your active orders and past order history will appear here.</string>
+    <string name="status_pending">Pending</string>
+    <string name="status_confirmed">Confirmed</string>
+    <string name="status_preparing">Preparing</string>
+    <string name="status_ready">Ready</string>
+    <string name="status_out_for_delivery">Out for delivery</string>
+    <string name="status_delivered">Delivered</string>
+    <string name="status_cancelled">Cancelled / Rejected</string>
+    <string name="order_items_count">%1$d item(s)</string>
+    <string name="order_est_arrival">Estimated delivery: ~%1$d min</string>
+
+    <!-- Favorites -->
+    <string name="favorites_title">Saved Favorites</string>
+    <string name="favorites_empty_title">No favorite meals yet</string>
+    <string name="favorites_empty_subtitle">Tap the heart icon on any dish to save it here for quick ordering.</string>
+
+    <!-- Profile, Settings, Contact & Help -->
+    <string name="profile_title">Profile &amp; Settings</string>
+    <string name="profile_section_account">My Account</string>
+    <string name="profile_save_btn">Save Profile</string>
+    <string name="profile_saved_toast">Profile updated!</string>
+    <string name="profile_addresses_title">Saved Delivery Addresses</string>
+    <string name="profile_add_address">Add Address</string>
+    <string name="profile_address_label_hint">Label (e.g., Home, Office)</string>
+    <string name="profile_language_title">Application Language</string>
+    <string name="lang_french">Français (Default)</string>
+    <string name="lang_arabic">العربية (RTL)</string>
+    <string name="lang_english">English</string>
+    <string name="profile_notifications_title">Notification Preferences</string>
+    <string name="profile_notif_order_updates">Order status updates</string>
+    <string name="profile_notif_promos">Special deals and promo codes</string>
+    <string name="profile_contact_help_title">Contact, Help &amp; FAQ</string>
+    <string name="profile_about_title">About Dominos Tunisia</string>
+    <string name="profile_about_desc">Native Android application built with Jetpack Compose and Supabase PostgreSQL Free Tier. Cash on Delivery (COD) in Tunisian Dinars (TND).</string>
+    <string name="profile_admin_portal_btn">Restaurant Admin Portal</string>
+    <string name="profile_logout_btn">Log Out</string>
+    <string name="profile_login_btn">Log In / Switch Account</string>
+    <string name="contact_phone_label">Phone</string>
+    <string name="contact_address_label">Restaurant Address</string>
+    <string name="contact_hours_label">Opening Hours</string>
+    <string name="contact_whatsapp_btn">Chat on WhatsApp</string>
+    <string name="contact_call_btn">Call Restaurant</string>
+    <string name="faq_title">Frequently Asked Questions (FAQ)</string>
+    <string name="faq_q1">How does payment work?</string>
+    <string name="faq_a1">We exclusively support Cash on Delivery (COD) in Tunisian Dinars (TND). No bank card details are ever collected.</string>
+    <string name="faq_q2">What are the delivery times and fees?</string>
+    <string name="faq_a2">Average delivery takes 25–35 minutes across Tunis. Standard delivery fees and minimum order amounts are displayed clearly before checkout.</string>
+    <string name="faq_q3">How do I track my order?</string>
+    <string name="faq_a3">Open the Orders/Offers tab to view the real-time status timeline (Pending, Confirmed, Preparing, Ready, Out for delivery, Delivered).</string>
+
+    <!-- Admin Portal -->
+    <string name="admin_title">Restaurant Administration</string>
+    <string name="admin_unauthorized">Access restricted to authorized administrators (verified RLS role).</string>
+    <string name="admin_switch_demo_admin">Switch to Demo Admin to test</string>
+    <string name="admin_tab_orders">Orders</string>
+    <string name="admin_tab_products">Products</string>
+    <string name="admin_tab_categories">Categories</string>
+    <string name="admin_tab_settings">Restaurant</string>
+    <string name="admin_sales_total">Total Sales Revenue</string>
+    <string name="admin_orders_count">Total Orders</string>
+    <string name="admin_Toggle_open">Restaurant Open for Orders</string>
+    <string name="admin_add_product">New Product</string>
+    <string name="admin_edit_product">Edit Product</string>
+    <string name="admin_add_category">New Category</string>
+    <string name="admin_edit_category">Edit Category</string>
+    <string name="admin_name_fr">Name (French)</string>
+    <string name="admin_name_ar">Name (Arabic)</string>
+    <string name="admin_name_en">Name (English)</string>
+    <string name="admin_desc_fr">Description (French)</string>
+    <string name="admin_desc_ar">Description (Arabic)</string>
+    <string name="admin_desc_en">Description (English)</string>
+    <string name="admin_price_millimes">Price in millimes (e.g. 18500 = 18.500 DT)</string>
+    <string name="admin_image_url">External HTTPS Image URL</string>
+    <string name="admin_available">Available</string>
+    <string name="admin_featured">Featured Product</string>
+    <string name="admin_active">Active Category</string>
+    <string name="admin_save">Save</string>
+    <string name="admin_delete">Delete</string>
+    <string name="admin_cancel">Cancel</string>
+</resources>

@@ -1,0 +1,6 @@
+{
+  "name": "Dominos",
+  "description": "Application native Android de commande et livraison de repas en Tunisie (Français, العربية, English) avec Supabase PostgreSQL, paiement à la livraison (COD) et interface inspirée de HoumaFood / Dominos.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
