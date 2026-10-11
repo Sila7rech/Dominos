@@ -31,7 +31,7 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import java.util.UUID
 
-class DominosViewModel(
+class DominosViewModel @JvmOverloads constructor(
     application: Application,
     val repository: DominosRepository = DominosRepository(),
     private val preferencesManager: PreferencesManager = PreferencesManager(application)

@@ -182,20 +182,12 @@ object SupabaseClientProvider {
     var currentAccessToken: String? = null
 
     val isSupabaseConfigured: Boolean
-        get() {
-            val url = BuildConfig.SUPABASE_URL.trim()
-            val key = BuildConfig.SUPABASE_ANON_KEY.trim()
-            return url.startsWith("https://") &&
-                url.contains(".supabase.co") &&
-                !url.contains("YOUR_SUPABASE") &&
-                key.length > 20 &&
-                !key.contains("YOUR_SUPABASE")
-        }
+        get() = SupabaseClient.isConfigured
 
     val api: SupabaseRestApi? by lazy {
         if (!isSupabaseConfigured) return@lazy null
-        val baseUrl = BuildConfig.SUPABASE_URL.trim().trimEnd('/') + "/"
-        val anonKey = BuildConfig.SUPABASE_ANON_KEY.trim()
+        val baseUrl = SupabaseClient.supabaseUrl.trimEnd('/') + "/"
+        val anonKey = SupabaseClient.supabaseAnonKey
 
         val authInterceptor = Interceptor { chain ->
             val token = currentAccessToken ?: anonKey
