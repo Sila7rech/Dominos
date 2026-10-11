@@ -69,6 +69,7 @@ import com.example.model.SavedAddress
 import com.example.model.UserProfile
 import com.example.ui.components.DominosSubScreenTopBar
 import com.example.ui.components.FoodNetworkImage
+import com.example.ui.components.GpsLocationChipButton
 import com.example.ui.components.PrimaryGradientButton
 import com.example.ui.components.QuantitySelector
 import com.example.ui.theme.CardPureWhite
@@ -86,10 +87,7 @@ import com.example.ui.theme.TextMutedOlive
 import com.example.ui.theme.WarningAmber
 
 /**
- * Shopping Cart Screen (Section 6F):
- * Add/remove products, increase/decrease quantities, display selected variants & extras,
- * calculate subtotal, delivery fee, discounts, final total in TND, enforce minimum-order requirement,
- * and preserve cart contents during navigation.
+ * Shopping Cart Screen (Section 6F)
  */
 @Composable
 fun ShoppingCartScreen(
@@ -317,7 +315,7 @@ fun ShoppingCartScreen(
                                     Text(
                                         text = stringResource(R.string.apply_btn),
                                         style = MaterialTheme.typography.labelLarge,
-                                        color = TextCharcoal,
+                                        color = Color.White,
                                         fontWeight = FontWeight.ExtraBold
                                     )
                                 }
@@ -404,7 +402,7 @@ fun ShoppingCartScreen(
                     }
                     HorizontalDivider(
                         modifier = Modifier.padding(vertical = 10.dp),
-                        color = Color(0xFFE5E8DF)
+                        color = Color(0xFFDCE6F0)
                     )
                     Row(
                         modifier = Modifier.fillMaxWidth(),
@@ -465,10 +463,7 @@ private fun PriceRow(
 }
 
 /**
- * Checkout Screen (Section 6G):
- * Customer name, Tunisian phone, delivery address, optional instructions,
- * Cash on Delivery (COD) only, full validation before submission,
- * and Order Confirmation dialog with unique order number.
+ * Checkout Screen (Section 6G) with Live GPS Location Button & Cash on Delivery (COD)
  */
 @Composable
 fun CheckoutScreen(
@@ -480,6 +475,7 @@ fun CheckoutScreen(
     isSubmitting: Boolean,
     validationError: OrderValidationError?,
     onClearError: () -> Unit,
+    onGpsLocationResolved: (String) -> Unit = {},
     onSubmitCodOrder: (String, String, String, String, (OrderRecord) -> Unit) -> Unit,
     onOrderConfirmedNavigateToTracking: () -> Unit,
     onOrderConfirmedBackHome: () -> Unit,
@@ -571,7 +567,7 @@ fun CheckoutScreen(
                             modifier = Modifier
                                 .border(
                                     1.dp,
-                                    if (selected) ForestGreenMid else Color(0xFFE5E8DF),
+                                    if (selected) ForestGreenMid else Color(0xFFDCE6F0),
                                     RoundedCornerShape(14.dp)
                                 )
                                 .clickable {
@@ -597,7 +593,7 @@ fun CheckoutScreen(
                 }
             }
 
-            // Customer Delivery Form Card
+            // Customer Delivery Form Card + Live GPS Button
             Card(
                 shape = RoundedCornerShape(22.dp),
                 colors = CardDefaults.cardColors(containerColor = CardPureWhite),
@@ -612,6 +608,16 @@ fun CheckoutScreen(
                         style = MaterialTheme.typography.titleMedium,
                         color = TextCharcoal,
                         fontWeight = FontWeight.ExtraBold
+                    )
+
+                    GpsLocationChipButton(
+                        onLocationResolved = { gpsAddr ->
+                            deliveryAddress = gpsAddr
+                            deliveryInstructions = "Position GPS actuelle"
+                            onClearError()
+                            onGpsLocationResolved(gpsAddr)
+                        },
+                        modifier = Modifier.fillMaxWidth()
                     )
 
                     OutlinedTextField(
@@ -667,7 +673,7 @@ fun CheckoutScreen(
                 }
             }
 
-            // Payment Method Card (Cash on Delivery Only — Strict Free Policy)
+            // Payment Method Card (Cash on Delivery Only)
             Card(
                 shape = RoundedCornerShape(22.dp),
                 colors = CardDefaults.cardColors(containerColor = LimeGreenSoft),
@@ -742,7 +748,7 @@ fun CheckoutScreen(
                             )
                         }
                     }
-                    HorizontalDivider(color = Color(0xFFE5E8DF))
+                    HorizontalDivider(color = Color(0xFFDCE6F0))
                     PriceRow(
                         label = stringResource(R.string.cart_subtotal),
                         value = CurrencyFormatter.formatMillimes(summary.subtotalMillimes, lang)

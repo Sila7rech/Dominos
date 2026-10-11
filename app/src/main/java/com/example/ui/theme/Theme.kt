@@ -8,15 +8,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.unit.dp
 
 private val DominosLightColorScheme = lightColorScheme(
-    primary = ForestGreenMid,
+    primary = DominosBlue,
     onPrimary = CardPureWhite,
-    primaryContainer = LimeGreenSoft,
-    onPrimaryContainer = ForestGreenDark,
-    secondary = LimeGreenBright,
-    onSecondary = TextCharcoal,
-    secondaryContainer = InputSurfaceSage,
-    onSecondaryContainer = TextCharcoal,
-    tertiary = PromoRibbonRed,
+    primaryContainer = DominosBlueSoft,
+    onPrimaryContainer = DominosBlueDark,
+    secondary = DominosRed,
+    onSecondary = CardPureWhite,
+    secondaryContainer = DominosRedSoft,
+    onSecondaryContainer = DominosRedDark,
+    tertiary = DominosRed,
     onTertiary = CardPureWhite,
     background = CreamBackground,
     onBackground = TextCharcoal,
@@ -24,7 +24,7 @@ private val DominosLightColorScheme = lightColorScheme(
     onSurface = TextCharcoal,
     surfaceVariant = InputSurfaceSage,
     onSurfaceVariant = TextMutedOlive,
-    outline = LimeGreenBorder,
+    outline = DominosBlueLight,
     error = ErrorCrimson,
     onError = CardPureWhite
 )

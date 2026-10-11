@@ -114,6 +114,7 @@ private fun DominosNavigationHost(
     val notifPromos by viewModel.notifPromos.collectAsStateWithLifecycle()
     val favoriteIds by viewModel.favoriteIds.collectAsStateWithLifecycle()
     val isOnlineSupabase by viewModel.isOnlineSupabaseMode.collectAsStateWithLifecycle()
+    val supabaseTablesMissing by viewModel.supabaseTablesMissing.collectAsStateWithLifecycle()
     val restaurantSettings by viewModel.restaurantSettings.collectAsStateWithLifecycle()
     val categories by viewModel.categories.collectAsStateWithLifecycle()
     val allProducts by viewModel.products.collectAsStateWithLifecycle()
@@ -170,6 +171,13 @@ private fun DominosNavigationHost(
             }
             launchSingleTop = true
             restoreState = true
+        }
+    }
+
+    val handleGpsLocation: (String) -> Unit = { gpsAddr ->
+        viewModel.applyGpsLocation(gpsAddr)
+        coroutineScope.launch {
+            snackbarHostState.showSnackbar("📍 Position GPS : $gpsAddr")
         }
     }
 
@@ -230,12 +238,16 @@ private fun DominosNavigationHost(
                         viewModel.signUp(fullName, email, phone, password) { success ->
                             onResult(success)
                             if (success) {
+                                coroutineScope.launch {
+                                    snackbarHostState.showSnackbar("✅ Compte créé avec succès ! Bienvenue $fullName")
+                                }
                                 navController.navigate(NavRoutes.HOME) {
                                     popUpTo(NavRoutes.AUTH) { inclusive = true }
                                 }
                             }
                         }
                     },
+                    onSeedSupabaseTables = { cb -> viewModel.seedSupabaseTables(cb) },
                     onQuickDemoCustomer = {
                         viewModel.loginAsDemoCustomer()
                         navController.navigate(NavRoutes.HOME) {
@@ -258,6 +270,7 @@ private fun DominosNavigationHost(
                 HomeAndCatalogScreen(
                     lang = language,
                     isOnlineSupabase = isOnlineSupabase,
+                    supabaseTablesMissing = supabaseTablesMissing,
                     restaurantSettings = restaurantSettings,
                     addressLabel = addressLabel,
                     deliveryAddress = deliveryAddress,
@@ -289,6 +302,8 @@ private fun DominosNavigationHost(
                     onApplyDeal = { code ->
                         viewModel.applyPromoCode(code.ifBlank { null })
                     },
+                    onGpsLocationResolved = handleGpsLocation,
+                    onSeedSupabaseTables = { cb -> viewModel.seedSupabaseTables(cb) },
                     onCartShortcutClick = { navigateToBottomTab(BottomNavTab.CART) },
                     onProfileShortcutClick = { navigateToBottomTab(BottomNavTab.PROFILE) }
                 )
@@ -368,6 +383,7 @@ private fun DominosNavigationHost(
                     isSubmitting = isSubmittingOrder,
                     validationError = checkoutError,
                     onClearError = { viewModel.clearCheckoutError() },
+                    onGpsLocationResolved = handleGpsLocation,
                     onSubmitCodOrder = { name, phone, addr, instr, onSuccess ->
                         viewModel.submitCodOrder(name, phone, addr, instr, onSuccess)
                     },
@@ -410,6 +426,8 @@ private fun DominosNavigationHost(
                     onSelectAddressForDelivery = { addr ->
                         viewModel.selectDeliveryAddress(addr)
                     },
+                    onGpsLocationResolved = handleGpsLocation,
+                    onSeedSupabaseTables = { cb -> viewModel.seedSupabaseTables(cb) },
                     onNotifOrderUpdatesChange = { viewModel.setNotifOrderUpdates(it) },
                     onNotifPromosChange = { viewModel.setNotifPromos(it) },
                     onOpenAdminPortal = { navController.navigate(NavRoutes.ADMIN) },
@@ -446,10 +464,13 @@ private fun DominosNavigationHost(
 }
 
 fun Context.createLocalizedContext(language: AppLanguage): Context {
-    val locale = Locale(language.code)
+    val locale = Locale.forLanguageTag(language.code)
     Locale.setDefault(locale)
     val config = Configuration(resources.configuration)
     config.setLocale(locale)
     config.setLayoutDirection(locale)
-    return createConfigurationContext(config)
+    val configContext = createConfigurationContext(config)
+    return object : android.content.ContextWrapper(this) {
+        override fun getResources(): android.content.res.Resources = configContext.resources
+    }
 }

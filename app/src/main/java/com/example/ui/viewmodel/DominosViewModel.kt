@@ -75,6 +75,8 @@ class DominosViewModel @JvmOverloads constructor(
     )
 
     val isOnlineSupabaseMode: StateFlow<Boolean> = repository.isOnlineSupabaseMode
+    val supabaseTablesMissing: StateFlow<Boolean> = repository.supabaseTablesMissing
+    val supabaseStatusMessage: StateFlow<String?> = repository.supabaseStatusMessage
     val restaurantSettings: StateFlow<RestaurantSettings> = repository.restaurantSettings
     val categories: StateFlow<List<Category>> = repository.categories
     val products: StateFlow<List<Product>> = repository.products
@@ -216,6 +218,23 @@ class DominosViewModel @JvmOverloads constructor(
     fun selectDeliveryAddress(savedAddress: SavedAddress) {
         _selectedAddressLabel.value = savedAddress.label
         _selectedDeliveryAddress.value = savedAddress.address
+    }
+
+    fun applyGpsLocation(formattedAddress: String) {
+        val saved = repository.addSavedAddress(
+            label = "GPS",
+            address = formattedAddress,
+            instructions = "Position GPS actuelle"
+        )
+        _selectedAddressLabel.value = saved.label
+        _selectedDeliveryAddress.value = saved.address
+    }
+
+    fun seedSupabaseTables(onDone: (Boolean) -> Unit = {}) {
+        viewModelScope.launch {
+            val ok = repository.seedInitialDataToSupabase()
+            onDone(ok)
+        }
     }
 
     fun addToCart(

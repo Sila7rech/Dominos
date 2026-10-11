@@ -118,4 +118,19 @@ class ExampleUnitTest {
         assertTrue(repo.adminUpdateOrderStatus(orderId, OrderStatus.DELIVERED))
         assertEquals(OrderStatus.DELIVERED, repo.orders.value.first { it.id == orderId }.status)
     }
+
+    @Test
+    fun `signUp and login always succeed for saber bradai account`() = runTest {
+        val repo = DominosRepository()
+        val signedUp = repo.signUp(
+            fullName = "saber bradai",
+            email = "saber@gmail.com",
+            phone = "51121136",
+            password = "password123"
+        )
+        assertTrue(signedUp)
+        assertEquals("saber bradai", repo.currentUser.value?.displayName)
+        assertEquals("saber@gmail.com", repo.currentUser.value?.email)
+        assertEquals("51121136", repo.currentUser.value?.phone)
+    }
 }

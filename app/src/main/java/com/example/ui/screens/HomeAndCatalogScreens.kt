@@ -62,7 +62,6 @@ import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.example.R
 import com.example.model.AppLanguage
 import com.example.model.CatalogSortOption
@@ -82,8 +81,11 @@ import com.example.ui.components.GreenDeliveryHeader
 import com.example.ui.components.PrimaryGradientButton
 import com.example.ui.components.QuantitySelector
 import com.example.ui.components.ScreenshotProductGridCard
+import com.example.ui.components.SupabaseTableSetupCard
 import com.example.ui.theme.CardPureWhite
 import com.example.ui.theme.CreamBackground
+import com.example.ui.theme.DominosBlue
+import com.example.ui.theme.DominosRed
 import com.example.ui.theme.ErrorCrimson
 import com.example.ui.theme.FlameOrange
 import com.example.ui.theme.ForestGreenDark
@@ -94,17 +96,18 @@ import com.example.ui.theme.LimeGreenBright
 import com.example.ui.theme.LimeGreenSoft
 import com.example.ui.theme.NotificationDotRed
 import com.example.ui.theme.PromoRibbonRed
-import com.example.ui.theme.SuccessEmerald
 import com.example.ui.theme.TextCharcoal
 import com.example.ui.theme.TextMutedOlive
 
 /**
- * Home & Product Catalog Screen reproducing Screenshot 4 and Screenshot 1
+ * Home & Product Catalog Screen in Domino's Blue & Crimson Red theme,
+ * with live GPS location button and Supabase Table Setup Assistant.
  */
 @Composable
 fun HomeAndCatalogScreen(
     lang: AppLanguage,
     isOnlineSupabase: Boolean,
+    supabaseTablesMissing: Boolean = false,
     restaurantSettings: RestaurantSettings,
     addressLabel: String,
     deliveryAddress: String,
@@ -125,6 +128,8 @@ fun HomeAndCatalogScreen(
     onQuickAddToCart: (Product) -> Unit,
     onToggleFavorite: (String) -> Unit,
     onApplyDeal: (String) -> Unit,
+    onGpsLocationResolved: (String) -> Unit = {},
+    onSeedSupabaseTables: ((Boolean) -> Unit) -> Unit = {},
     onCartShortcutClick: () -> Unit,
     onProfileShortcutClick: () -> Unit
 ) {
@@ -142,7 +147,7 @@ fun HomeAndCatalogScreen(
             .testTag("home_screen_list"),
         contentPadding = PaddingValues(bottom = 24.dp)
     ) {
-        // 1. Curved Green Delivery Header + Promotional Hero Banner (Screenshot 4)
+        // 1. Curved Domino's Royal Blue Delivery Header + Live GPS Button
         item {
             GreenDeliveryHeader(
                 addressLabel = addressLabel,
@@ -150,15 +155,15 @@ fun HomeAndCatalogScreen(
                 isOnlineSupabase = isOnlineSupabase,
                 cartItemCount = cartItemCount,
                 onAddressClick = onProfileShortcutClick,
+                onGpsLocationResolved = onGpsLocationResolved,
                 onCartClick = onCartShortcutClick,
                 onProfileClick = onProfileShortcutClick,
                 bottomContent = {
-                    // Restaurant Status Pill Bar (Open/Closed, Est Delivery, Delivery Fee, Min Order)
                     Row(
                         modifier = Modifier
                             .fillMaxWidth()
                             .clip(RoundedCornerShape(14.dp))
-                            .background(Color.Black.copy(alpha = 0.18f))
+                            .background(Color.Black.copy(alpha = 0.22f))
                             .padding(horizontal = 12.dp, vertical = 8.dp),
                         horizontalArrangement = Arrangement.SpaceBetween,
                         verticalAlignment = Alignment.CenterVertically
@@ -168,7 +173,7 @@ fun HomeAndCatalogScreen(
                                 modifier = Modifier
                                     .size(8.dp)
                                     .clip(CircleShape)
-                                    .background(if (restaurantSettings.isOpen) LimeGreenBright else ErrorCrimson)
+                                    .background(if (restaurantSettings.isOpen) Color(0xFF4ADE80) else ErrorCrimson)
                             )
                             Spacer(modifier = Modifier.width(6.dp))
                             Text(
@@ -195,7 +200,17 @@ fun HomeAndCatalogScreen(
             )
         }
 
-        // 2. Promotional Banner Card matching Screenshot 4 ("FAST & FREE DELIVERY! ORDER NOW")
+        // If Supabase tables are missing, show 1-click SQL setup & seed assistant banner
+        if (supabaseTablesMissing) {
+            item {
+                SupabaseTableSetupCard(
+                    onSeedTablesClick = onSeedSupabaseTables,
+                    modifier = Modifier.padding(horizontal = 16.dp, vertical = 10.dp)
+                )
+            }
+        }
+
+        // 2. Domino's Blue & Crimson Red Promotional Banner Card
         item {
             Box(
                 modifier = Modifier
@@ -205,9 +220,9 @@ fun HomeAndCatalogScreen(
                     .background(
                         Brush.horizontalGradient(
                             colors = listOf(
-                                Color(0xFFD9F0B4),
-                                Color(0xFF69AA2B),
-                                Color(0xFF477C1B)
+                                Color(0xFF003B57),
+                                Color(0xFF006491),
+                                Color(0xFFE31837)
                             )
                         )
                     )
@@ -222,12 +237,12 @@ fun HomeAndCatalogScreen(
                     horizontalArrangement = Arrangement.SpaceBetween
                 ) {
                     Image(
-                        painter = painterResource(id = R.drawable.img_scooter_hero_1791739922901),
+                        painter = painterResource(id = R.drawable.img_dominos_launcher_1791739912765),
                         contentDescription = null,
                         contentScale = ContentScale.Crop,
                         modifier = Modifier
-                            .size(116.dp)
-                            .clip(RoundedCornerShape(18.dp))
+                            .size(106.dp)
+                            .clip(RoundedCornerShape(20.dp))
                     )
 
                     Spacer(modifier = Modifier.width(12.dp))
@@ -254,6 +269,7 @@ fun HomeAndCatalogScreen(
                             modifier = Modifier
                                 .clip(RoundedCornerShape(8.dp))
                                 .background(PromoRibbonRed)
+                                .border(1.dp, Color.White.copy(alpha = 0.6f), RoundedCornerShape(8.dp))
                                 .padding(horizontal = 16.dp, vertical = 6.dp)
                         ) {
                             Text(
@@ -278,7 +294,7 @@ fun HomeAndCatalogScreen(
             Spacer(modifier = Modifier.height(16.dp))
         }
 
-        // 4. Categories Section matching Screenshot 4
+        // 4. Categories Section
         item {
             SectionHeaderRow(
                 title = stringResource(R.string.section_categories),
@@ -314,7 +330,7 @@ fun HomeAndCatalogScreen(
             Spacer(modifier = Modifier.height(18.dp))
         }
 
-        // 5. "Order again" / Featured Section matching Screenshot 4
+        // 5. "Order again" / Featured Section
         if (featuredOrderAgain.isNotEmpty() && searchQuery.isBlank() && selectedCategoryId == null) {
             item {
                 SectionHeaderRow(
@@ -339,7 +355,7 @@ fun HomeAndCatalogScreen(
                 Spacer(modifier = Modifier.height(18.dp))
             }
 
-            // 6. "Deals for you" Section matching Screenshot 4
+            // 6. "Deals for you" Section
             item {
                 SectionHeaderRow(
                     title = stringResource(R.string.section_deals_for_you),
@@ -387,7 +403,7 @@ fun HomeAndCatalogScreen(
                         CurrencyFormatter.formatMillimes(restaurantSettings.minimumOrderMillimes, lang)
                     }",
                     style = MaterialTheme.typography.labelMedium,
-                    color = ForestGreenMid
+                    color = DominosBlue
                 )
             }
 
@@ -410,14 +426,14 @@ fun HomeAndCatalogScreen(
                         label = { Text(label, style = MaterialTheme.typography.labelMedium) },
                         colors = FilterChipDefaults.filterChipColors(
                             selectedContainerColor = LimeGreenSoft,
-                            selectedLabelColor = ForestGreenDark
+                            selectedLabelColor = DominosBlue
                         )
                     )
                 }
             }
         }
 
-        // 8. 2-Column Product Grid matching Screenshot 1
+        // 8. 2-Column Product Grid
         if (products.isEmpty()) {
             item {
                 Box(
@@ -495,16 +511,13 @@ private fun SectionHeaderRow(
             Text(
                 text = actionLabel,
                 style = MaterialTheme.typography.labelLarge,
-                color = ForestGreenMid,
+                color = DominosRed,
                 modifier = Modifier.clickable(onClick = onActionClick)
             )
         }
     }
 }
 
-/**
- * Compact "Order again" Card matching Screenshot 4 ("Cheese Burger / Yesterday · 14,900 DT" + soft green repeat button)
- */
 @Composable
 private fun OrderAgainCompactCard(
     product: Product,
@@ -567,7 +580,7 @@ private fun OrderAgainCompactCard(
                 Icon(
                     imageVector = Icons.Default.Autorenew,
                     contentDescription = stringResource(R.string.add_to_cart_btn),
-                    tint = ForestGreenMid,
+                    tint = DominosBlue,
                     modifier = Modifier.size(20.dp)
                 )
             }
@@ -575,12 +588,6 @@ private fun OrderAgainCompactCard(
     }
 }
 
-/**
- * Product Details Screen (Section 6E):
- * Large product image, localized name & description, price, quantity selector,
- * optional variants & extras (ONLY if configured on the product),
- * special instructions, calculated total, and Add to Cart action.
- */
 @Composable
 fun ProductDetailsScreen(
     product: Product,
@@ -668,7 +675,7 @@ fun ProductDetailsScreen(
                         Text(
                             text = CurrencyFormatter.formatMillimes(product.priceMillimes, lang),
                             style = MaterialTheme.typography.titleLarge,
-                            color = ForestGreenMid,
+                            color = DominosBlue,
                             fontWeight = FontWeight.ExtraBold
                         )
                     }
@@ -722,7 +729,7 @@ fun ProductDetailsScreen(
                 }
             }
 
-            // Optional Variants (Only displayed if product actually has variants)
+            // Optional Variants
             if (product.variants.isNotEmpty()) {
                 Spacer(modifier = Modifier.height(16.dp))
                 Text(
@@ -741,7 +748,7 @@ fun ProductDetailsScreen(
                                 .fillMaxWidth()
                                 .border(
                                     width = if (isSelected) 1.5.dp else 1.dp,
-                                    color = if (isSelected) ForestGreenMid else Color(0xFFE5E8DF),
+                                    color = if (isSelected) DominosBlue else Color(0xFFDCE6F0),
                                     shape = RoundedCornerShape(16.dp)
                                 )
                                 .clickable { selectedVariant = variant }
@@ -766,7 +773,7 @@ fun ProductDetailsScreen(
                                         stringResource(R.string.free_label)
                                     },
                                     style = MaterialTheme.typography.labelLarge,
-                                    color = ForestGreenMid
+                                    color = DominosBlue
                                 )
                             }
                         }
@@ -774,7 +781,7 @@ fun ProductDetailsScreen(
                 }
             }
 
-            // Optional Extras (Only displayed if product actually has extras)
+            // Optional Extras
             if (product.extras.isNotEmpty()) {
                 Spacer(modifier = Modifier.height(16.dp))
                 Text(
@@ -793,7 +800,7 @@ fun ProductDetailsScreen(
                                 .fillMaxWidth()
                                 .border(
                                     width = 1.dp,
-                                    color = if (isChecked) ForestGreenMid else Color(0xFFE5E8DF),
+                                    color = if (isChecked) DominosBlue else Color(0xFFDCE6F0),
                                     shape = RoundedCornerShape(16.dp)
                                 )
                                 .clickable {
@@ -823,7 +830,7 @@ fun ProductDetailsScreen(
                                             Icon(
                                                 imageVector = Icons.Default.Check,
                                                 contentDescription = null,
-                                                tint = TextCharcoal,
+                                                tint = Color.White,
                                                 modifier = Modifier.size(14.dp)
                                             )
                                         }
@@ -838,7 +845,7 @@ fun ProductDetailsScreen(
                                 Text(
                                     text = "+${CurrencyFormatter.formatMillimes(extra.priceMillimes, lang)}",
                                     style = MaterialTheme.typography.labelLarge,
-                                    color = ForestGreenMid
+                                    color = DominosBlue
                                 )
                             }
                         }
@@ -868,7 +875,7 @@ fun ProductDetailsScreen(
                     focusedContainerColor = CardPureWhite,
                     unfocusedContainerColor = CardPureWhite,
                     focusedBorderColor = LimeGreenBorder,
-                    unfocusedBorderColor = Color(0xFFE4E8DE)
+                    unfocusedBorderColor = Color(0xFFDCE6F0)
                 ),
                 modifier = Modifier
                     .fillMaxWidth()

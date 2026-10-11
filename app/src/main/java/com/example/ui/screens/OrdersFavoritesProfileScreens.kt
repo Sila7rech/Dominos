@@ -3,7 +3,6 @@ package com.example.ui.screens
 import android.content.Intent
 import android.net.Uri
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -72,8 +71,10 @@ import com.example.model.RestaurantSettings
 import com.example.model.SavedAddress
 import com.example.model.UserProfile
 import com.example.ui.components.DealPromoCard
+import com.example.ui.components.GpsLocationChipButton
 import com.example.ui.components.PrimaryGradientButton
 import com.example.ui.components.ScreenshotProductGridCard
+import com.example.ui.components.SupabaseTableSetupCard
 import com.example.ui.theme.CardPureWhite
 import com.example.ui.theme.CreamBackground
 import com.example.ui.theme.ErrorCrimson
@@ -88,9 +89,7 @@ import com.example.ui.theme.TextMutedOlive
 import com.example.ui.theme.WarningAmber
 
 /**
- * Offers & Order Tracking Screen (Section 6H):
- * Displays active deals AND full Order Status Timeline (Pending -> Confirmed -> Preparing -> Ready -> Out for delivery -> Delivered)
- * with manual refresh and order history.
+ * Offers & Order Tracking Screen (Section 6H)
  */
 @Composable
 fun OffersAndOrderTrackingScreen(
@@ -322,7 +321,7 @@ private fun OrderTimelineCard(
                 }
             }
 
-            HorizontalDivider(color = Color(0xFFE5E8DF))
+            HorizontalDivider(color = Color(0xFFDCE6F0))
 
             // Order items snapshot
             order.items.forEach { item ->
@@ -455,7 +454,8 @@ fun FavoritesSavedScreen(
 }
 
 /**
- * Profile, Settings, Language Selector (FR / AR RTL / EN), Contact & Help Screen (Sections 6J & 6K)
+ * Profile, Settings, Language Selector (FR / AR RTL / EN), GPS Address Resolver,
+ * Supabase Database Setup Assistant, Contact & Help Screen
  */
 @Composable
 fun ProfileSettingsAndHelpScreen(
@@ -470,6 +470,8 @@ fun ProfileSettingsAndHelpScreen(
     onUpdateProfile: (String, String) -> Unit,
     onAddAddress: (String, String, String) -> Unit,
     onSelectAddressForDelivery: (SavedAddress) -> Unit,
+    onGpsLocationResolved: (String) -> Unit = {},
+    onSeedSupabaseTables: ((Boolean) -> Unit) -> Unit = {},
     onNotifOrderUpdatesChange: (Boolean) -> Unit,
     onNotifPromosChange: (Boolean) -> Unit,
     onOpenAdminPortal: () -> Unit,
@@ -511,6 +513,13 @@ fun ProfileSettingsAndHelpScreen(
                 },
                 style = MaterialTheme.typography.bodySmall,
                 color = ForestGreenDark
+            )
+        }
+
+        // Supabase Table Setup Assistant Card (Copy SQL in 1 click + Auto-Seed Tables)
+        item {
+            SupabaseTableSetupCard(
+                onSeedTablesClick = onSeedSupabaseTables
             )
         }
 
@@ -632,7 +641,7 @@ fun ProfileSettingsAndHelpScreen(
             }
         }
 
-        // 3. Saved Delivery Addresses Card
+        // 3. Saved Delivery Addresses Card + Live GPS Button
         item {
             Card(
                 shape = RoundedCornerShape(22.dp),
@@ -649,6 +658,16 @@ fun ProfileSettingsAndHelpScreen(
                         color = TextCharcoal,
                         fontWeight = FontWeight.ExtraBold
                     )
+
+                    GpsLocationChipButton(
+                        onLocationResolved = { gpsAddr ->
+                            newAddrLabel = "GPS"
+                            newAddrValue = gpsAddr
+                            onGpsLocationResolved(gpsAddr)
+                        },
+                        modifier = Modifier.fillMaxWidth()
+                    )
+
                     savedAddresses.forEach { addr ->
                         Surface(
                             color = InputSurfaceSage,
@@ -834,7 +853,7 @@ fun ProfileSettingsAndHelpScreen(
                         }
                     }
 
-                    HorizontalDivider(color = Color(0xFFE5E8DF))
+                    HorizontalDivider(color = Color(0xFFDCE6F0))
 
                     Text(
                         text = stringResource(R.string.faq_title),
@@ -846,7 +865,7 @@ fun ProfileSettingsAndHelpScreen(
                     FaqEntry(stringResource(R.string.faq_q2), stringResource(R.string.faq_a2))
                     FaqEntry(stringResource(R.string.faq_q3), stringResource(R.string.faq_a3))
 
-                    HorizontalDivider(color = Color(0xFFE5E8DF))
+                    HorizontalDivider(color = Color(0xFFDCE6F0))
                     Text(
                         text = stringResource(R.string.profile_about_title),
                         style = MaterialTheme.typography.titleSmall,
